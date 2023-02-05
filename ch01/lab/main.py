@@ -15,4 +15,4 @@ for i in vars:
 
 my_list = ["hi", 5, 1.0, 3.2, "4"]
 choice = random.choice(my_list)
-print(choice)
+print("Random Choice:", choice)
