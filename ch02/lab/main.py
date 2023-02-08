@@ -8,3 +8,4 @@ print("Cost per week:", cost_per_week)
 
 
 #Part B
+print(list(range(100,0,-1)))
