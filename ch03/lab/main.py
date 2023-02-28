@@ -1,26 +1,41 @@
-import turtle #1. import modules
+import pygame
 import random
+import math
 
-#Part A
-window = turtle.Screen() # 2.  Create a screen
-window.bgcolor('lightblue')
+pygame.init()
+window = pygame.display.set_mode((640, 640))
+running = True
+screen_w = pygame.display.get_window_size()[0]
+screen_h = pygame.display.get_window_size()[1]
+window.fill("blue")
 
-michelangelo = turtle.Turtle() # 3.  Create two turtles
-leonardo = turtle.Turtle()
-michelangelo.color('orange')
-leonardo.color('blue')
-michelangelo.shape('turtle')
-leonardo.shape('turtle')
+dart_coords = []
+center = [screen_w/2, screen_h/2]
 
-michelangelo.up() # 4. Pick up the pen so we don’t get lines
-leonardo.up()
-michelangelo.goto(-100,20)
-leonardo.goto(-100,-20)
+for i in range(10):
+    dart_x = random.randrange(0, screen_w+1)
+    dart_y = random.randrange(0, screen_h+1)
+    center_dist = math.hypot(center[0]-dart_x, center[1]-dart_y)
+    if center_dist > screen_w/2:
+        dart_coords.append([dart_x, dart_y, False])
+    else:
+        dart_coords.append([dart_x, dart_y, True])
 
-## 5. Your PART A code goes here
+while running: 
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
 
+    pygame.draw.circle(window, "pink", [screen_w/2, screen_h/2], screen_w//2, screen_h//2, 0)
+    pygame.draw.line(window, "black", [screen_w/2, 0], [screen_w/2, screen_h/2])
+    pygame.draw.line(window, "black", [screen_w/2, screen_h], [screen_w/2, screen_h/2])
+    pygame.draw.line(window, "black", [screen_w, screen_h/2], [screen_w/2, screen_h/2])
+    pygame.draw.line(window, "black", [0, screen_h/2], [screen_w/2, screen_h/2])
 
-# PART B - complete part B here
+    for coord in dart_coords:
+        if coord[2]:
+            pygame.draw.circle(window, "black", [coord[0], coord[1]], 5, 0)
+        else:
+            pygame.draw.circle(window, "red", [coord[0], coord[1]], 5, 0)
 
-
-window.exitonclick()
+    pygame.display.flip()
