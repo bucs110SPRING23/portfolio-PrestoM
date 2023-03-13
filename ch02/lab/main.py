@@ -63,7 +63,7 @@ while running:
             point.append(y)
             points.append(point)
         pygame.draw.polygon(window, "blue", points)
-
-
-
-    pygame.display.flip()
+        print(points)
+        pygame.time.wait(1000)
+        pygame.display.flip()
+        window.fill("white")
