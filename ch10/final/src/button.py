@@ -11,7 +11,6 @@ class Text:
         return: none
         '''
         self.text = text
-        #self.size = size
         self.pos = pos
         self.font = font
         self.x = pos[0]

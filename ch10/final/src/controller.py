@@ -28,10 +28,6 @@ class Controller:
         self.op2_w, self.op2_h, self.op2_x, self.op2_y, self.op2_button = None, None, None, None, None
         self.op3_w, self.op3_h, self.op3_x, self.op3_y, self.op3_button = None, None, None, None, None
 
-        #self.cocktail = cocktail.Cocktail()
-        #self.selected_meal = None
-        #self.meal = None
-        
         self.gen_button_w = 100
         self.gen_button_h = 50
         self.gen_button_x = (self.window_w/2) - (self.gen_button_w/2)
@@ -65,16 +61,11 @@ class Controller:
         '''
         while True:
             for event in pygame.event.get():
-            # if the user clicks the close button, quit the program
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     exit()
 
             self.display.fill("white")
-            #for event in pygame.event.get():
-                #if event.type == pygame.QUIT:
-                    #pygame.quit()
-                    #exit()
             
             if self.STATE == "GENERATE":
                 self.genloop() 
@@ -84,7 +75,6 @@ class Controller:
                 self.chosenloop()          
           
             pygame.display.flip()
-
 
     def genloop(self):
         '''
@@ -103,7 +93,6 @@ class Controller:
             pygame.draw.rect(self.display, "gray", self.gen_button.rect)
 
         self.display.blit(self.gen_button.text, self.gen_button.rect)
-
 
     def gen_options(self):
         '''
@@ -187,7 +176,7 @@ class Controller:
         arg(s): none
         return: none
         '''
-        tail = self.tails[self.chosen_tail_num] #chosen tail
+        tail = self.tails[self.chosen_tail_num] #chosen cocktail
         if not self.meal_chose:
             self.gen_ing(tail)
             self.gen_meal()
