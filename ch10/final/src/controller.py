@@ -34,6 +34,9 @@ class Controller:
         self.gen_button_y = self.window_h/2
         self.gen_button = button.Button(self.gen_button_x, self.gen_button_y, text="Generate", w=self.gen_button_w, h=self.gen_button_h)
     
+    def __str__(self):
+        return self.STATE
+
     def gen_ing(self, chosen_tail):
         '''
         generates an ingredient to be used from the selected cocktail

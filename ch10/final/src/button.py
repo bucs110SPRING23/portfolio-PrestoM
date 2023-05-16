@@ -20,6 +20,9 @@ class Text:
         self.font_ = self.disp.render(self.text, True, self.color)
         self.size = self.font_.get_size()
 
+    def __str__(self):
+        return self.text
+
 
     def set_pos(self, new_pos):
         '''

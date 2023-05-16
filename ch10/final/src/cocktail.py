@@ -10,11 +10,13 @@ class Cocktail:
         '''
         self.api_url = "https://www.thecocktaildb.com/api/json/v1/1/random.php"
         self.api = requests.get(self.api_url)
-        self.gened_cocktails = []
         self.info = self.api.json()
         self.tail_name = self.info["drinks"][0]["strDrink"]
         self.ing = None
         self.ings = []
+
+    def __str__(self):
+        return self.api
 
     def generate_ings(self):
         '''

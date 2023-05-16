@@ -16,6 +16,9 @@ class Meal:
             self.meal = self.info["meals"][random.randint(0, len(self.info["meals"])-1)]["strMeal"]
         except:
             self.meal = "None"
+        
+    def __str__(self):
+        return self.api
 
     def get_meal(self):
         '''
